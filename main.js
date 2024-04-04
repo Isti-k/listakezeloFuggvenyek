@@ -34,3 +34,10 @@ emberekLISTA.sort(function(e1,e2){
 })
 
 console.log(emberekLISTA)
+
+
+emberekLISTA.sort(function(e1,e2){
+    return Math.random()-0.5
+})
+
+console.log(emberekLISTA)
