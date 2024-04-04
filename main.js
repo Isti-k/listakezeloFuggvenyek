@@ -29,5 +29,8 @@ const FERFIAK10FELETT = emberekLISTA.filter((ember)=>{
     return ember.kor>10 && !ember.nem===false
 })
 
+emberekLISTA.sort(function(e1,e2){
+    return e2.kor-e1.kor
+})
 
-
+console.log(emberekLISTA)
