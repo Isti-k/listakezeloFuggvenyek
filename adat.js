@@ -13,5 +13,15 @@ export const emberekLISTA = [
         nev:"Jenő",
         kor:32,
         nem:false
+    },
+    {
+        nev:"Jakab",
+        kor:89,
+        nem:false
+    },
+    {
+        nev:"Jancsi",
+        kor:56,
+        nem:false
     }
 ]
