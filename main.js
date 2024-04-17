@@ -1,3 +1,8 @@
+import { emberekLISTA } from "./adat.js";
+import { szuresNevSzerint, tablazatRendez, sorTorles } from "./adatKezelo.js";
+import { megjelenites, tablazatOsszeallit } from "./fuggvenyek.js";
+
+
 /* jelenítsük meg az adatainkat egy táblázatban az adatok div-ben
 az urlap div-ben legyen egy űrlap, amivel ilyen adatokat tudunk a táblázatba beletenni 
 
@@ -22,3 +27,49 @@ Ezután megjelanítjük a szürt listát az oldalon.
 Akkor fog lefutni, amikor megváltozik a  szürőmező tartalma.
 
 */
+let nevIrany = 1;
+init(emberekLISTA);
+nevSzuresEsemeny();
+
+function init(lista){
+    let txt = tablazatOsszeallit(emberekLISTA)
+    megjelenites(txt);
+    nevRendezEsemeny(lista);
+    sorTorlesEsemeny();
+}
+
+
+function nevRendezEsemeny(lista){
+    const nevELEM=$(".adatok th").eq(0) // az első fejléc th elem
+    nevELEM.on("click", function(){
+    const LISTA=tablazatRendez(lista, nevIrany);
+    nevIrany*=(-1);
+    init(LISTA);
+});
+}
+
+export function nevSzuresEsemeny(){
+    const szuroELEM = $("#szNEV")
+    szuroELEM.on("keyup", function(){
+    let szuroSZoveg = szuroELEM.val()
+    const LISTA=szuresNevSzerint(emberekLISTA, szuroSZoveg)
+    init(LISTA)
+    });
+}
+
+function nevSzuresEsemeny(){
+}
+// szorgalmi: szűrés más mezők alapján is működjön
+// + mi a hiba a programban?
+
+function sorTorlesEsemeny(){
+    const kukaELEM=$(".kuka")
+    kukaELEM.on("click", function(){
+        let index=event.target.id
+        const LISTA = sorTorles(emberekLISTA, index);
+        init(LISTA);
+    });
+}
+
+
+
