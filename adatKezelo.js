@@ -8,21 +8,21 @@ export function tablazatRendez(lista,irany){
         }*/
 
 
-        return a.nev-b.nev? 1 : -1 // pozitív, vagy nevgatív érték kell
+        return a.nev.toUpperCase()>b.nevtoUpperCase() ? 1*irany : -1*irany; // pozitív, vagy nevgatív érték kell
     });
-    return lista
+    return lista;
 }
 
 // szorgalmi: lehessen rendezni kor szerint is! *** tetszőleges mező szerint
 
-function atalakit(szoveg){
+function atalakit(lista){
     // szorgalmi: Á-A, É-E replacall()
 }
 
 
 export function szuresNevSzerint(lista, szurtSzoveg){
     const SZURTLISTA=lista.filter(function(elem){
-        return elem.nev.includes(szurtSzoveg)
+        return elem.nev.includes(szurtSzoveg);
     });
     console.log(SZURTLISTA);
     return SZURTLISTA;

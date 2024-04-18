@@ -1,6 +1,7 @@
 import { emberekLISTA } from "./adat.js";
 import { szuresNevSzerint, tablazatRendez, sorTorles } from "./adatKezelo.js";
 import { megjelenites, tablazatOsszeallit } from "./fuggvenyek.js";
+import { adatokLista } from "./urlapKezelo.js";
 
 
 /* jelenítsük meg az adatainkat egy táblázatban az adatok div-ben
@@ -30,9 +31,10 @@ Akkor fog lefutni, amikor megváltozik a  szürőmező tartalma.
 let nevIrany = 1;
 init(emberekLISTA);
 nevSzuresEsemeny();
+adatokLista(emberekLISTA);
 
-function init(lista){
-    let txt = tablazatOsszeallit(emberekLISTA)
+export function init(lista){
+    const txt = tablazatOsszeallit(lista)
     megjelenites(txt);
     nevRendezEsemeny(lista);
     sorTorlesEsemeny();
@@ -49,22 +51,20 @@ function nevRendezEsemeny(lista){
 }
 
 export function nevSzuresEsemeny(){
-    const szuroELEM = $("#szNEV")
+    const szuroELEM = $("#szNev")
     szuroELEM.on("keyup", function(){
-    let szuroSZoveg = szuroELEM.val()
-    const LISTA=szuresNevSzerint(emberekLISTA, szuroSZoveg)
-    init(LISTA)
+        let szuroSZoveg = szuroELEM.val()
+        const LISTA=szuresNevSzerint(emberekLISTA, szuroSZoveg);
+        init(LISTA)
     });
 }
 
-function nevSzuresEsemeny(){
-}
 // szorgalmi: szűrés más mezők alapján is működjön
 // + mi a hiba a programban?
 
 function sorTorlesEsemeny(){
     const kukaELEM=$(".kuka")
-    kukaELEM.on("click", function(){
+    kukaELEM.on("click", function(event){
         let index=event.target.id
         const LISTA = sorTorles(emberekLISTA, index);
         init(LISTA);
